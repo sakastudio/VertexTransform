@@ -17,9 +17,14 @@ public class ObjLoader
         return (vertices,faces);
     }
 
+    public static (Dictionary<int, Vertex> vertices, List<List<int>> faces) LoadTeapot()
+    {
+        return LoadVertex("../../../Asset/teapot.obj");
+    }
+
     private static LoadResult LoadObj(string path)
     {
-        Console.WriteLine("LoadObj FullPath:" + Path.GetFullPath(path));
+        Console.WriteLine("Objファイルをロード :" + Path.GetFullPath(path));
         
         var objLoaderFactory = new ObjLoaderFactory();
         return objLoaderFactory.Create().Load(new FileStream(path, FileMode.Open));
